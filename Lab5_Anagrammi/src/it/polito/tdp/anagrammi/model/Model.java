@@ -25,17 +25,29 @@ public class Model {
 	}
 
 private void calcola(String parziale, String parola, int passo, Set<String> anagrammi) {
+	System.out.println("siamo al passo: "+passo);
+
 	if(passo==parola.length()) {
 		anagrammi.add(parziale);
+		System.out.println("parola ha lunghezza massima");
+
 		return;
 	}
 	
 	for(int i=0;i<parola.length();i++) {
-		
+		System.out.println("ciclo for: "+i+"al passo"+passo);
+
 		if(charCounter(parziale,parola.charAt(i))<charCounter(parola,parola.charAt(i))) {
 			parziale+=parola.charAt(i);
+			System.out.println("siamo al passo: "+passo+" "+parziale);
+
 			calcola(parziale,parola,passo+1,anagrammi);
+			System.out.println("siamo al passo: "+passo+"!!!!!!!!!!!!!!!!!"+parziale);
+
 			parziale=parziale.substring(0, parziale.length()-1);
+			
+			System.out.println("siamo al passo: "+passo+"???????????"+parziale);
+
 		}
 	}
 }
